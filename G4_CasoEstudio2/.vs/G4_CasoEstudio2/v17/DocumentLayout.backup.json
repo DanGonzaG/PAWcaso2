@@ -1,18 +1,42 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Progra\\Caso2\\G4_CasoEstudio2\\",
+  "WorkspaceRootPath": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|c:\\progra\\caso2\\g4_casoestudio2\\g4_casoestudio2.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|c:\\progra\\caso2\\g4_casoestudio2\\g4_casoestudio2.app\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\models\\asistenciadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\models\\asistenciadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\models\\eventodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\models\\eventodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\models\\contexto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\models\\contexto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|c:\\progra\\caso2\\g4_casoestudio2\\g4_casoestudio2.app\\models\\contexto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\models\\contexto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\models\\evento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\models\\evento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\models\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\models\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\models\\asistencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\models\\asistencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,46 +46,89 @@
       "DocumentGroups": [
         {
           "DockedWidth": 214,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Progra\\Caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\appsettings.json",
-              "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\appsettings.json",
-              "ToolTip": "C:\\Progra\\Caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\appsettings.json",
-              "RelativeToolTip": "G4_CasoEstudio2.App\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABSAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-16T01:16:34.85Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Progra\\Caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Program.cs",
-              "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\Program.cs",
-              "ToolTip": "C:\\Progra\\Caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Program.cs",
-              "RelativeToolTip": "G4_CasoEstudio2.App\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAARAAAAAAAAAA==",
+              "Title": "AsistenciaDTO.cs",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Models\\AsistenciaDTO.cs",
+              "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\Models\\AsistenciaDTO.cs",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Models\\AsistenciaDTO.cs",
+              "RelativeToolTip": "G4_CasoEstudio2.App\\Models\\AsistenciaDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T01:15:14.449Z",
+              "WhenOpened": "2025-04-16T02:53:39.562Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Contexto.cs",
-              "DocumentMoniker": "C:\\Progra\\Caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Models\\Contexto.cs",
-              "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\Models\\Contexto.cs",
-              "ToolTip": "C:\\Progra\\Caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Models\\Contexto.cs",
-              "RelativeToolTip": "G4_CasoEstudio2.App\\Models\\Contexto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAKAAAAAAAAAA==",
+              "Title": "EventoDTO.cs",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Models\\EventoDTO.cs",
+              "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\Models\\EventoDTO.cs",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Models\\EventoDTO.cs",
+              "RelativeToolTip": "G4_CasoEstudio2.App\\Models\\EventoDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T01:08:38.575Z",
+              "WhenOpened": "2025-04-16T02:50:08.889Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Asistencia.cs",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Models\\Asistencia.cs",
+              "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\Models\\Asistencia.cs",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Models\\Asistencia.cs",
+              "RelativeToolTip": "G4_CasoEstudio2.App\\Models\\Asistencia.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T02:30:42.714Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\Models\\Usuario.cs",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Models\\Usuario.cs",
+              "RelativeToolTip": "G4_CasoEstudio2.App\\Models\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T02:30:24.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Categoria.cs",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Models\\Categoria.cs",
+              "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\Models\\Categoria.cs",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Models\\Categoria.cs",
+              "RelativeToolTip": "G4_CasoEstudio2.App\\Models\\Categoria.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T02:30:02.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Evento.cs",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Models\\Evento.cs",
+              "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\Models\\Evento.cs",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Models\\Evento.cs",
+              "RelativeToolTip": "G4_CasoEstudio2.App\\Models\\Evento.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T02:28:48.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Bookmark",
@@ -80,8 +147,43 @@
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\appsettings.json",
+              "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\appsettings.json",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\appsettings.json",
+              "RelativeToolTip": "G4_CasoEstudio2.App\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-16T01:16:34.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Program.cs",
+              "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\Program.cs",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Program.cs",
+              "RelativeToolTip": "G4_CasoEstudio2.App\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T01:15:14.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Contexto.cs",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Models\\Contexto.cs",
+              "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\Models\\Contexto.cs",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Models\\Contexto.cs",
+              "RelativeToolTip": "G4_CasoEstudio2.App\\Models\\Contexto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T01:08:38.575Z",
+              "EditorCaption": ""
             }
           ]
         }
