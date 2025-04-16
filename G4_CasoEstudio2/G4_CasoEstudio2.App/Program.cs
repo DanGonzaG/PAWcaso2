@@ -55,7 +55,7 @@ app.MapGet("/api/eventos", async (Contexto db) =>
 {
     var eventos = await db.Eventos
         .Include(e => e.Categoria)
-        .Where(e => e.Estado == "Activo")
+        .Where(e => e.Estado == true)
         .Select(e => new EventoDTO
         {
             Id = e.Id,
@@ -76,7 +76,7 @@ app.MapGet("/api/eventos/{id}", async (int id, Contexto db) =>
 {
     var evento = await db.Eventos
         .Include(e => e.Categoria)
-        .Where(e => e.Id == id && e.Estado == "Activo")
+        .Where(e => e.Id == id && e.Estado == true)
         .Select(e => new EventoDTO
         {
             Id = e.Id,

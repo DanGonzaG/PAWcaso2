@@ -17,7 +17,7 @@ namespace G4_CasoEstudio2.App.Controllers
         {
             var eventos = await _context.Eventos
                 .Include(e => e.Categoria)
-                .Where(e => e.Estado == "Activo")
+                .Where(e => e.Estado == true)
                 .ToListAsync();
 
             return View(eventos);
@@ -28,7 +28,7 @@ namespace G4_CasoEstudio2.App.Controllers
         {
             var evento = await _context.Eventos
                 .Include(e => e.Categoria)
-                .FirstOrDefaultAsync(e => e.Id == id && e.Estado == "Activo");
+                .FirstOrDefaultAsync(e => e.Id == id && e.Estado == true);
 
             if (evento == null)
             {
