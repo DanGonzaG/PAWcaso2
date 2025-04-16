@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("Server") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 Console.WriteLine($"Cadena de conexión utilizada: {connectionString}");
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
