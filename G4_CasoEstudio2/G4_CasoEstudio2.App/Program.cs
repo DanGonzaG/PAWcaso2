@@ -1,4 +1,4 @@
-﻿using G4_CasoEstudio2.App.Data;
+using G4_CasoEstudio2.App.Data;
 using G4_CasoEstudio2.App.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -22,11 +22,25 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 //  Configuración de Identity
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>() //se agrega para habilitar el servicio de roles
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+//Verifica se lo roles existen y si no los crea todo esto sucede en el incio de la aplicacion
+using (var scope = app.Services.CreateScope())
+{
+    var roles = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    if (!await roles.RoleExistsAsync("Administrador") || !await roles.RoleExistsAsync("Organizador") || !await roles.RoleExistsAsync("Usuario"))
+    {
+        await roles.CreateAsync(new IdentityRole("Administrador"));
+        await roles.CreateAsync(new IdentityRole("Organizador"));
+        await roles.CreateAsync(new IdentityRole("Usuario"));
+    }
+}
+
 
 //  Configuración del pipeline HTTP
 if (app.Environment.IsDevelopment())
