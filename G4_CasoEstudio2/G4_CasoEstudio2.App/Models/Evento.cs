@@ -5,16 +5,20 @@
         public int Id { get; set; }
         public string Titulo { get; set; }
         public string Descripcion { get; set; }
-        public DateOnly Fecha { get; set; }
-        public TimeOnly Hora { get; set; }
-        public int Duracion { get; set; } // en minutos
+        public DateTime Fecha { get; set; }
+        public string Hora { get; set; }
         public string Ubicacion { get; set; }
         public int CupoMaximo { get; set; }
-        public DateTime FechaRegistro { get; set; } = DateTime.Now;
-        public string UsuarioRegistro { get; set; } = "Sistema"; // Asignar un valor por defecto
-        public int CategoriaId { get; set; }
+        public string Estado { get; set; }
+        public DateTime FechaRegistro { get; set; }
 
-        public Categoria Categoria { get; set; } // Relación con la entidad Categoria
+        public string UsuarioRegistro { get; set; } // Puede ser ID o nombre según las reglas
+
+        public int CategoriaId { get; set; }
+        public Categoria Categoria { get; set; }
+
+        public List<Asistencia> Asistencias { get; set; } = new(); // <- Navegación
     }
+
 }
 
