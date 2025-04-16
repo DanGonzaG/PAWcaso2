@@ -16,28 +16,7 @@ namespace G4_CasoEstudio2.App.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configuración para Usuario
-            modelBuilder.Entity<Usuario>(entity =>
-            {
-                entity.HasKey(u => u.Id);
-                entity.Property(u => u.NombreUsuario)
-                    .IsRequired()
-                    .HasMaxLength(100);
-                entity.Property(u => u.Correo)
-                    .IsRequired();
-                entity.Property(u => u.Telefono)
-                    .IsRequired();
-                entity.Property(u => u.Contraseña)
-                    .IsRequired();
-                entity.Property(u => u.Rol)
-                    .IsRequired();
-
-                // Relación uno a muchos con Asistencia
-                entity.HasMany(u => u.Asistencias)
-                    .WithOne(a => a.Usuario)
-                    .HasForeignKey(a => a.UsuarioId)
-                    .OnDelete(DeleteBehavior.Cascade);
-            });
+          
 
             // Configuración para Categoria
             modelBuilder.Entity<Categoria>(entity =>
@@ -135,6 +114,23 @@ namespace G4_CasoEstudio2.App.Models
                 // Podrías considerar añadir una clave única compuesta para evitar duplicados
                 entity.HasIndex(a => new { a.EventoId, a.UsuarioId })
                     .IsUnique();
+            });
+
+            // Configuración para Usuario
+            modelBuilder.Entity<Usuario>(entity =>
+            {
+                entity.HasKey(u => u.Id);
+                entity.Property(u => u.NombreUsuario).HasMaxLength(200).IsRequired(false);
+                entity.Property(u => u.Correo).HasMaxLength(200).IsRequired(false);
+                entity.Property(u => u.Telefono).HasMaxLength(200).IsRequired(false);
+                entity.Property(u => u.Contraseña).HasMaxLength(200).IsRequired(false); 
+                entity.Property(u => u.Rol).HasMaxLength(200).IsRequired(false);
+
+                // Relación uno a muchos con Asistencia
+                entity.HasMany(u => u.Asistencias)
+                    .WithOne(a => a.Usuario)
+                    .HasForeignKey(a => a.UsuarioId)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
         }
     }

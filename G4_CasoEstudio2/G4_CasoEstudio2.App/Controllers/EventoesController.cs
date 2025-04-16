@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using G4_CasoEstudio2.App.Models;
+using System.Security.Claims;
 
 namespace G4_CasoEstudio2.App.Controllers
 {
@@ -19,6 +20,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Eventoes
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Index()
         {
             var contexto = _context.Eventos.Include(e => e.Categoria).Include(e => e.Usuario);
@@ -26,6 +28,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Eventoes/Details/5
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -46,6 +49,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Eventoes/Create
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Create()
         {
             ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Descripcion");
@@ -56,6 +60,7 @@ namespace G4_CasoEstudio2.App.Controllers
         // POST: Eventoes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Titulo,Descripcion,Fecha,Hora,Duration,Ubicacion,CupoMaximo,Estado,FechaRegistro,UsuarioRegistro,CategoriaId")] Evento evento)
@@ -72,6 +77,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Eventoes/Edit/5
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,6 +98,7 @@ namespace G4_CasoEstudio2.App.Controllers
         // POST: Eventoes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Titulo,Descripcion,Fecha,Hora,Duration,Ubicacion,CupoMaximo,Estado,FechaRegistro,UsuarioRegistro,CategoriaId")] Evento evento)
@@ -127,6 +134,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Eventoes/Delete/5
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -147,6 +155,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // POST: Eventoes/Delete/5
+        //[Authorize(Roles = "Administrador")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -164,6 +173,16 @@ namespace G4_CasoEstudio2.App.Controllers
         private bool EventoExists(int id)
         {
             return _context.Eventos.Any(e => e.Id == id);
+        }
+
+        /*Lista de eventos filtrados por usuario*/
+        //[Authorize(Roles = "Organizador")]
+        public async Task<IActionResult> EventosXOrganizador()
+        {            
+            var contexto = _context.Eventos.Include(e => e.Categoria)
+                .Include(e => e.Usuario)
+                .Where(co => co.Usuario.Correo == User.Identity.Name);
+            return View(await contexto.ToListAsync());
         }
     }
 }

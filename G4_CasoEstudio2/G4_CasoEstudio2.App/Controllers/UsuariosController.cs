@@ -19,12 +19,14 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Usuarios
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Usuarios.ToListAsync());
         }
 
         // GET: Usuarios/Details/5
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,6 +45,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Usuarios/Create
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Create()
         {
             return View();
@@ -51,6 +54,7 @@ namespace G4_CasoEstudio2.App.Controllers
         // POST: Usuarios/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,NombreUsuario,Correo,Telefono,Contraseña,Rol")] Usuario usuario)
@@ -65,6 +69,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Usuarios/Edit/5
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -83,6 +88,7 @@ namespace G4_CasoEstudio2.App.Controllers
         // POST: Usuarios/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,NombreUsuario,Correo,Telefono,Contraseña,Rol")] Usuario usuario)
@@ -116,6 +122,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Usuarios/Delete/5
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,6 +141,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // POST: Usuarios/Delete/5
+        //[Authorize(Roles = "Administrador")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

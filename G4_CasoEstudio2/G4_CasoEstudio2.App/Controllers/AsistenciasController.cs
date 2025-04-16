@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using G4_CasoEstudio2.App.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace G4_CasoEstudio2.App.Controllers
 {
@@ -18,14 +19,18 @@ namespace G4_CasoEstudio2.App.Controllers
             _context = context;
         }
 
+
         // GET: Asistencias
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Index()
         {
             var contexto = _context.Asistencias.Include(a => a.Evento).Include(a => a.Usuario);
             return View(await contexto.ToListAsync());
         }
 
+
         // GET: Asistencias/Details/5
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,7 +50,9 @@ namespace G4_CasoEstudio2.App.Controllers
             return View(asistencia);
         }
 
+
         // GET: Asistencias/Create
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Create()
         {
             ViewData["EventoId"] = new SelectList(_context.Eventos, "Id", "Descripcion");
@@ -53,9 +60,11 @@ namespace G4_CasoEstudio2.App.Controllers
             return View();
         }
 
+
         // POST: Asistencias/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,EventoId,UsuarioId")] Asistencia asistencia)
@@ -72,6 +81,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Asistencias/Edit/5
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,6 +102,7 @@ namespace G4_CasoEstudio2.App.Controllers
         // POST: Asistencias/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,EventoId,UsuarioId")] Asistencia asistencia)
@@ -127,6 +138,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Asistencias/Delete/5
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -147,6 +159,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // POST: Asistencias/Delete/5
+        //[Authorize(Roles = "Administrador")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

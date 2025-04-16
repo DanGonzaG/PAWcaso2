@@ -19,6 +19,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Categorias
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Index()
         {
             var contexto = _context.Categorias.Include(c => c.Usuario);
@@ -26,6 +27,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Categorias/Details/5
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,6 +47,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Categorias/Create
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Create()
         {
             ViewData["UsuarioRegistro"] = new SelectList(_context.Usuarios, "Id", "Contraseña");
@@ -54,6 +57,7 @@ namespace G4_CasoEstudio2.App.Controllers
         // POST: Categorias/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Descripcion,Estado,FechaRegistro,UsuarioRegistro")] Categoria categoria)
@@ -69,6 +73,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Categorias/Edit/5
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -88,6 +93,7 @@ namespace G4_CasoEstudio2.App.Controllers
         // POST: Categorias/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Descripcion,Estado,FechaRegistro,UsuarioRegistro")] Categoria categoria)
@@ -122,6 +128,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Categorias/Delete/5
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -141,6 +148,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // POST: Categorias/Delete/5
+        //[Authorize(Roles = "Administrador")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using G4_CasoEstudio2.App.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -29,6 +30,7 @@ namespace G4_CasoEstudio2.App.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly Contexto _contexto;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
@@ -128,6 +130,10 @@ namespace G4_CasoEstudio2.App.Areas.Identity.Pages.Account
                     var role = Input.rol; //se crea variable para obtener le rol de formulario
                     await _userManager.AddToRoleAsync(user, role); //Crear el usuario y rol en la tabla en BD
 
+                    Usuario usuario = new Usuario();
+                    usuario.Correo = Input.Email;
+                    _contexto.Usuarios.Add(usuario);
+
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -149,6 +155,8 @@ namespace G4_CasoEstudio2.App.Areas.Identity.Pages.Account
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }
+
+                    
                 }
                 foreach (var error in result.Errors)
                 {
