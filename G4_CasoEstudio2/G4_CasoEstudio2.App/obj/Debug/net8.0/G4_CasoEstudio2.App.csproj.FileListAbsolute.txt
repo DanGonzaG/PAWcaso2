@@ -424,3 +424,4 @@ D:\Github\PAWcaso2\G4_CasoEstudio2\G4_CasoEstudio2.App\obj\Debug\net8.0\refint\G
 D:\Github\PAWcaso2\G4_CasoEstudio2\G4_CasoEstudio2.App\obj\Debug\net8.0\G4_CasoEstudio2.App.pdb
 D:\Github\PAWcaso2\G4_CasoEstudio2\G4_CasoEstudio2.App\obj\Debug\net8.0\G4_CasoEstudio2.App.genruntimeconfig.cache
 D:\Github\PAWcaso2\G4_CasoEstudio2\G4_CasoEstudio2.App\obj\Debug\net8.0\ref\G4_CasoEstudio2.App.dll
+D:\Github\PAWcaso2\G4_CasoEstudio2\G4_CasoEstudio2.App\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
