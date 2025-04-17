@@ -6,41 +6,31 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using G4_CasoEstudio2.App.Models;
+using G4_CasoEstudio2.App.Services;
 
 namespace G4_CasoEstudio2.App.Controllers
 {
     public class UsuariosController : Controller
     {
-        private readonly Contexto _context;
+        private readonly IUsuarioServices _usuario;
 
-        public UsuariosController(Contexto context)
+        public UsuariosController(IUsuarioServices usuario)
         {
-            _context = context;
+            _usuario = usuario;
         }
 
         // GET: Usuarios
         //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Usuarios.ToListAsync());
+            return View(await _usuario.Listar());
         }
 
         // GET: Usuarios/Details/5
         //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var usuario = await _context.Usuarios
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (usuario == null)
-            {
-                return NotFound();
-            }
-
+            var usuario = await _usuario.BuscarXid(id);
             return View(usuario);
         }
 
@@ -61,8 +51,7 @@ namespace G4_CasoEstudio2.App.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(usuario);
-                await _context.SaveChangesAsync();
+                await _usuario.Crear(usuario);
                 return RedirectToAction(nameof(Index));
             }
             return View(usuario);
@@ -77,7 +66,7 @@ namespace G4_CasoEstudio2.App.Controllers
                 return NotFound();
             }
 
-            var usuario = await _context.Usuarios.FindAsync(id);
+            var usuario = await _usuario.BuscarXid(id);
             if (usuario == null)
             {
                 return NotFound();
@@ -102,12 +91,12 @@ namespace G4_CasoEstudio2.App.Controllers
             {
                 try
                 {
-                    _context.Update(usuario);
-                    await _context.SaveChangesAsync();
+
+                    await _usuario.Modificar(usuario);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsuarioExists(usuario.Id))
+                    if (!await _usuario.UsuarioExists(usuario.Id))
                     {
                         return NotFound();
                     }
@@ -130,8 +119,7 @@ namespace G4_CasoEstudio2.App.Controllers
                 return NotFound();
             }
 
-            var usuario = await _context.Usuarios
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var usuario = await _usuario.BuscarXid(id);
             if (usuario == null)
             {
                 return NotFound();
@@ -146,19 +134,8 @@ namespace G4_CasoEstudio2.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var usuario = await _context.Usuarios.FindAsync(id);
-            if (usuario != null)
-            {
-                _context.Usuarios.Remove(usuario);
-            }
-
-            await _context.SaveChangesAsync();
+            await _usuario.Eliminar(id);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool UsuarioExists(int id)
-        {
-            return _context.Usuarios.Any(e => e.Id == id);
         }
     }
 }

@@ -1,5 +1,6 @@
 using G4_CasoEstudio2.App.Data;
 using G4_CasoEstudio2.App.Models;
+using G4_CasoEstudio2.App.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,6 +27,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddControllersWithViews();
+
+// Servicios
+builder.Services.AddScoped<IAsistenciaServices, AsistenciaServices>();
+builder.Services.AddScoped<ICategoriaServices, CategoriaServices>();
+builder.Services.AddScoped<IEventoServices, EventoServices>();
+builder.Services.AddScoped<IUsuarioServices, UsuarioServices>();
 
 var app = builder.Build();
 

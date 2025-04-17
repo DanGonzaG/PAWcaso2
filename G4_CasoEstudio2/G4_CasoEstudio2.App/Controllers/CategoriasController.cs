@@ -6,43 +6,31 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using G4_CasoEstudio2.App.Models;
+using G4_CasoEstudio2.App.Services;
 
 namespace G4_CasoEstudio2.App.Controllers
 {
     public class CategoriasController : Controller
     {
-        private readonly Contexto _context;
+        private readonly ICategoriaServices _categoria;
 
-        public CategoriasController(Contexto context)
+        public CategoriasController(ICategoriaServices categoria)
         {
-            _context = context;
+            _categoria = categoria;
         }
 
         // GET: Categorias
         //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Index()
         {
-            var contexto = _context.Categorias.Include(c => c.Usuario);
-            return View(await contexto.ToListAsync());
+            return View(await _categoria.Listar());
         }
 
         // GET: Categorias/Details/5
         //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var categoria = await _context.Categorias
-                .Include(c => c.Usuario)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (categoria == null)
-            {
-                return NotFound();
-            }
-
+            var categoria = await _categoria.BuscarXid(id);
             return View(categoria);
         }
 
@@ -50,7 +38,6 @@ namespace G4_CasoEstudio2.App.Controllers
         //[Authorize(Roles = "Administrador")]
         public IActionResult Create()
         {
-            ViewData["UsuarioRegistro"] = new SelectList(_context.Usuarios, "Id", "Contraseña");
             return View();
         }
 
@@ -64,11 +51,10 @@ namespace G4_CasoEstudio2.App.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(categoria);
-                await _context.SaveChangesAsync();
+
+                await _categoria.Crear(categoria);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UsuarioRegistro"] = new SelectList(_context.Usuarios, "Id", "Contraseña", categoria.UsuarioRegistro);
             return View(categoria);
         }
 
@@ -81,12 +67,11 @@ namespace G4_CasoEstudio2.App.Controllers
                 return NotFound();
             }
 
-            var categoria = await _context.Categorias.FindAsync(id);
+            var categoria = await _categoria.BuscarXid(id);
             if (categoria == null)
             {
                 return NotFound();
             }
-            ViewData["UsuarioRegistro"] = new SelectList(_context.Usuarios, "Id", "Contraseña", categoria.UsuarioRegistro);
             return View(categoria);
         }
 
@@ -107,12 +92,12 @@ namespace G4_CasoEstudio2.App.Controllers
             {
                 try
                 {
-                    _context.Update(categoria);
-                    await _context.SaveChangesAsync();
+
+                    await _categoria.Modificar(categoria);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CategoriaExists(categoria.Id))
+                    if (!await _categoria.CategoriaExists(categoria.Id))
                     {
                         return NotFound();
                     }
@@ -123,7 +108,6 @@ namespace G4_CasoEstudio2.App.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UsuarioRegistro"] = new SelectList(_context.Usuarios, "Id", "Contraseña", categoria.UsuarioRegistro);
             return View(categoria);
         }
 
@@ -136,9 +120,7 @@ namespace G4_CasoEstudio2.App.Controllers
                 return NotFound();
             }
 
-            var categoria = await _context.Categorias
-                .Include(c => c.Usuario)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var categoria = await _categoria.BuscarXid(id);
             if (categoria == null)
             {
                 return NotFound();
@@ -153,19 +135,8 @@ namespace G4_CasoEstudio2.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var categoria = await _context.Categorias.FindAsync(id);
-            if (categoria != null)
-            {
-                _context.Categorias.Remove(categoria);
-            }
-
-            await _context.SaveChangesAsync();
+            await _categoria.Eliminar(id);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool CategoriaExists(int id)
-        {
-            return _context.Categorias.Any(e => e.Id == id);
         }
     }
 }

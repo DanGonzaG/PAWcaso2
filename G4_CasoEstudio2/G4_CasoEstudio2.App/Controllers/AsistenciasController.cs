@@ -7,16 +7,17 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using G4_CasoEstudio2.App.Models;
 using Microsoft.AspNetCore.Authorization;
+using G4_CasoEstudio2.App.Services;
 
 namespace G4_CasoEstudio2.App.Controllers
 {
     public class AsistenciasController : Controller
     {
-        private readonly Contexto _context;
+        private readonly IAsistenciaServices _asistencia;
 
-        public AsistenciasController(Contexto context)
+        public AsistenciasController(IAsistenciaServices asistencia)
         {
-            _context = context;
+            _asistencia = asistencia;
         }
 
 
@@ -24,8 +25,7 @@ namespace G4_CasoEstudio2.App.Controllers
         //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Index()
         {
-            var contexto = _context.Asistencias.Include(a => a.Evento).Include(a => a.Usuario);
-            return View(await contexto.ToListAsync());
+            return View(await _asistencia.Listar());
         }
 
 
@@ -33,20 +33,7 @@ namespace G4_CasoEstudio2.App.Controllers
         //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var asistencia = await _context.Asistencias
-                .Include(a => a.Evento)
-                .Include(a => a.Usuario)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (asistencia == null)
-            {
-                return NotFound();
-            }
-
+            var asistencia = await _asistencia.BuscarXid(id);
             return View(asistencia);
         }
 
@@ -55,8 +42,6 @@ namespace G4_CasoEstudio2.App.Controllers
         //[Authorize(Roles = "Administrador")]
         public IActionResult Create()
         {
-            ViewData["EventoId"] = new SelectList(_context.Eventos, "Id", "Descripcion");
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Contraseña");
             return View();
         }
 
@@ -71,12 +56,10 @@ namespace G4_CasoEstudio2.App.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(asistencia);
-                await _context.SaveChangesAsync();
+
+                await _asistencia.crear(asistencia);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EventoId"] = new SelectList(_context.Eventos, "Id", "Descripcion", asistencia.EventoId);
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Contraseña", asistencia.UsuarioId);
             return View(asistencia);
         }
 
@@ -89,13 +72,11 @@ namespace G4_CasoEstudio2.App.Controllers
                 return NotFound();
             }
 
-            var asistencia = await _context.Asistencias.FindAsync(id);
+            var asistencia = await _asistencia.BuscarXid(id);
             if (asistencia == null)
             {
                 return NotFound();
             }
-            ViewData["EventoId"] = new SelectList(_context.Eventos, "Id", "Descripcion", asistencia.EventoId);
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Contraseña", asistencia.UsuarioId);
             return View(asistencia);
         }
 
@@ -116,12 +97,12 @@ namespace G4_CasoEstudio2.App.Controllers
             {
                 try
                 {
-                    _context.Update(asistencia);
-                    await _context.SaveChangesAsync();
+
+                    await _asistencia.Modificar(asistencia);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AsistenciaExists(asistencia.Id))
+                    if (!await _asistencia.AsistenciaExists(asistencia.Id))
                     {
                         return NotFound();
                     }
@@ -132,8 +113,6 @@ namespace G4_CasoEstudio2.App.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EventoId"] = new SelectList(_context.Eventos, "Id", "Descripcion", asistencia.EventoId);
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Contraseña", asistencia.UsuarioId);
             return View(asistencia);
         }
 
@@ -146,10 +125,7 @@ namespace G4_CasoEstudio2.App.Controllers
                 return NotFound();
             }
 
-            var asistencia = await _context.Asistencias
-                .Include(a => a.Evento)
-                .Include(a => a.Usuario)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var asistencia = await _asistencia.BuscarXid(id);
             if (asistencia == null)
             {
                 return NotFound();
@@ -164,19 +140,8 @@ namespace G4_CasoEstudio2.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var asistencia = await _context.Asistencias.FindAsync(id);
-            if (asistencia != null)
-            {
-                _context.Asistencias.Remove(asistencia);
-            }
-
-            await _context.SaveChangesAsync();
+            await _asistencia.Eliminar(id);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool AsistenciaExists(int id)
-        {
-            return _context.Asistencias.Any(e => e.Id == id);
         }
     }
 }

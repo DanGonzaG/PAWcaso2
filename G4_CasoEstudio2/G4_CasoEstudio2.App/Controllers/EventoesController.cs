@@ -7,44 +7,31 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using G4_CasoEstudio2.App.Models;
 using System.Security.Claims;
+using G4_CasoEstudio2.App.Services;
 
 namespace G4_CasoEstudio2.App.Controllers
 {
     public class EventoesController : Controller
     {
-        private readonly Contexto _context;
+        private readonly IEventoServices _evento;
 
-        public EventoesController(Contexto context)
+        public EventoesController(IEventoServices evento)
         {
-            _context = context;
+            _evento = evento;
         }
 
         // GET: Eventoes
         //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Index()
         {
-            var contexto = _context.Eventos.Include(e => e.Categoria).Include(e => e.Usuario);
-            return View(await contexto.ToListAsync());
+            return View(await _evento.Listar());
         }
 
         // GET: Eventoes/Details/5
         //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var evento = await _context.Eventos
-                .Include(e => e.Categoria)
-                .Include(e => e.Usuario)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (evento == null)
-            {
-                return NotFound();
-            }
-
+            var evento = await _evento.BuscarXid(id);
             return View(evento);
         }
 
@@ -52,8 +39,6 @@ namespace G4_CasoEstudio2.App.Controllers
         //[Authorize(Roles = "Administrador")]
         public IActionResult Create()
         {
-            ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Descripcion");
-            ViewData["UsuarioRegistro"] = new SelectList(_context.Usuarios, "Id", "Contraseña");
             return View();
         }
 
@@ -67,12 +52,9 @@ namespace G4_CasoEstudio2.App.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(evento);
-                await _context.SaveChangesAsync();
+                await _evento.Crear(evento);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Descripcion", evento.CategoriaId);
-            ViewData["UsuarioRegistro"] = new SelectList(_context.Usuarios, "Id", "Contraseña", evento.UsuarioRegistro);
             return View(evento);
         }
 
@@ -85,13 +67,11 @@ namespace G4_CasoEstudio2.App.Controllers
                 return NotFound();
             }
 
-            var evento = await _context.Eventos.FindAsync(id);
+            var evento = await _evento.BuscarXid(id);
             if (evento == null)
             {
                 return NotFound();
             }
-            ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Descripcion", evento.CategoriaId);
-            ViewData["UsuarioRegistro"] = new SelectList(_context.Usuarios, "Id", "Contraseña", evento.UsuarioRegistro);
             return View(evento);
         }
 
@@ -112,12 +92,12 @@ namespace G4_CasoEstudio2.App.Controllers
             {
                 try
                 {
-                    _context.Update(evento);
-                    await _context.SaveChangesAsync();
+
+                    await _evento.Modificar(evento);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EventoExists(evento.Id))
+                    if (!await _evento.EventoExists(evento.Id))
                     {
                         return NotFound();
                     }
@@ -128,8 +108,6 @@ namespace G4_CasoEstudio2.App.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Descripcion", evento.CategoriaId);
-            ViewData["UsuarioRegistro"] = new SelectList(_context.Usuarios, "Id", "Contraseña", evento.UsuarioRegistro);
             return View(evento);
         }
 
@@ -142,10 +120,7 @@ namespace G4_CasoEstudio2.App.Controllers
                 return NotFound();
             }
 
-            var evento = await _context.Eventos
-                .Include(e => e.Categoria)
-                .Include(e => e.Usuario)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var evento = await _evento.BuscarXid(id);
             if (evento == null)
             {
                 return NotFound();
@@ -160,29 +135,8 @@ namespace G4_CasoEstudio2.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var evento = await _context.Eventos.FindAsync(id);
-            if (evento != null)
-            {
-                _context.Eventos.Remove(evento);
-            }
-
-            await _context.SaveChangesAsync();
+            await _evento.Eliminar(id);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool EventoExists(int id)
-        {
-            return _context.Eventos.Any(e => e.Id == id);
-        }
-
-        /*Lista de eventos filtrados por usuario*/
-        //[Authorize(Roles = "Organizador")]
-        public async Task<IActionResult> EventosXOrganizador()
-        {            
-            var contexto = _context.Eventos.Include(e => e.Categoria)
-                .Include(e => e.Usuario)
-                .Where(co => co.Usuario.Correo == User.Identity.Name);
-            return View(await contexto.ToListAsync());
         }
     }
 }
