@@ -78,7 +78,9 @@ namespace G4_CasoEstudio2.App.Areas.Identity.Pages.Account
             [Display(Name = "Nombre Completo")]
             public string NombreCompleto { get; set; }
 
-
+            [Required]
+            [Display(Name = "UserName")]
+            public string UserName { get; set; }
 
             [Required]
             [Display(Name = "Rol")]
@@ -101,7 +103,7 @@ namespace G4_CasoEstudio2.App.Areas.Identity.Pages.Account
             {
                 var user = new Usuario
                 {
-                    UserName = Input.Email,
+                    UserName = Input.UserName,
                     Email = Input.Email,
                     NombreCompleto = Input.NombreCompleto,
                     PhoneNumber = ""
