@@ -9,7 +9,7 @@ namespace G4_CasoEstudio2.App.Models
         public int EventoId { get; set; }
         public Evento Evento { get; set; }
         [Required]
-        public int UsuarioId { get; set; }
+        public string UsuarioId { get; set; }
         public Usuario Usuario { get; set; }
     }
 

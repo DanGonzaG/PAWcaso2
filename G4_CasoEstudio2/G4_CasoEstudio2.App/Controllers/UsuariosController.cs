@@ -7,30 +7,49 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using G4_CasoEstudio2.App.Models;
 using G4_CasoEstudio2.App.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace G4_CasoEstudio2.App.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class UsuariosController : Controller
     {
-        private readonly IUsuarioServices _usuario;
+        private readonly UserManager<Usuario> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UsuariosController(IUsuarioServices usuario)
+        public UsuariosController(
+            UserManager<Usuario> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
-            _usuario = usuario;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         // GET: Usuarios
         //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Index()
         {
-            return View(await _usuario.Listar());
+            var usuarios = await _userManager.Users.ToListAsync();
+            return View(usuarios);
         }
 
         // GET: Usuarios/Details/5
         //[Authorize(Roles = "Administrador")]
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
-            var usuario = await _usuario.BuscarXid(id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var usuario = await _userManager.FindByIdAsync(id);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.Roles = await _userManager.GetRolesAsync(usuario);
             return View(usuario);
         }
 
@@ -38,6 +57,7 @@ namespace G4_CasoEstudio2.App.Controllers
         //[Authorize(Roles = "Administrador")]
         public IActionResult Create()
         {
+            ViewBag.Roles = new SelectList(_roleManager.Roles, "Name", "Name");
             return View();
         }
 
@@ -47,30 +67,49 @@ namespace G4_CasoEstudio2.App.Controllers
         //[Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NombreUsuario,Correo,Telefono,Contraseña,Rol")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("Id,NombreUsuario,Correo,Telefono,Contraseña,Rol")] Usuario usuario, string contraseña, string rol)
         {
             if (ModelState.IsValid)
             {
-                await _usuario.Crear(usuario);
-                return RedirectToAction(nameof(Index));
+                usuario.UserName = usuario.Email;
+
+                var result = await _userManager.CreateAsync(usuario, contraseña);
+
+                if (result.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(usuario, rol);
+                    return RedirectToAction(nameof(Index));
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
             }
+
+            ViewBag.Roles = new SelectList(_roleManager.Roles, "Name", "Name");
             return View(usuario);
         }
 
         // GET: Usuarios/Edit/5
         //[Authorize(Roles = "Administrador")]
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var usuario = await _usuario.BuscarXid(id);
+            var usuario = await _userManager.FindByIdAsync(id);
             if (usuario == null)
             {
                 return NotFound();
             }
+
+            var roles = await _userManager.GetRolesAsync(usuario);
+            ViewBag.CurrentRole = roles.FirstOrDefault();
+            ViewBag.Roles = new SelectList(_roleManager.Roles, "Name", "Name");
+
             return View(usuario);
         }
 
@@ -80,7 +119,9 @@ namespace G4_CasoEstudio2.App.Controllers
         //[Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NombreUsuario,Correo,Telefono,Contraseña,Rol")] Usuario usuario)
+        public async Task<IActionResult> Edit(string id,
+            [Bind("Id,NombreCompleto,Email,PhoneNumber")] Usuario usuario,
+            string rol)
         {
             if (id != usuario.Id)
             {
@@ -89,52 +130,69 @@ namespace G4_CasoEstudio2.App.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+                var user = await _userManager.FindByIdAsync(id);
+                if (user == null)
                 {
+                    return NotFound();
+                }
 
-                    await _usuario.Modificar(usuario);
-                }
-                catch (DbUpdateConcurrencyException)
+                user.NombreCompleto = usuario.NombreCompleto;
+                user.Email = usuario.Email;
+                user.UserName = usuario.Email;
+                user.PhoneNumber = usuario.PhoneNumber;
+
+                var result = await _userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
                 {
-                    if (!await _usuario.UsuarioExists(usuario.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    // Actualizar rol
+                    var currentRoles = await _userManager.GetRolesAsync(user);
+                    await _userManager.RemoveFromRolesAsync(user, currentRoles);
+                    await _userManager.AddToRoleAsync(user, rol);
+
+                    return RedirectToAction(nameof(Index));
                 }
-                return RedirectToAction(nameof(Index));
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
             }
+
+            ViewBag.Roles = new SelectList(_roleManager.Roles, "Name", "Name");
             return View(usuario);
         }
 
         // GET: Usuarios/Delete/5
         //[Authorize(Roles = "Administrador")]
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var usuario = await _usuario.BuscarXid(id);
+            var usuario = await _userManager.FindByIdAsync(id);
             if (usuario == null)
             {
                 return NotFound();
             }
 
+            ViewBag.Roles = await _userManager.GetRolesAsync(usuario);
             return View(usuario);
         }
 
         // POST: Usuarios/Delete/5
-        //[Authorize(Roles = "Administrador")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            await _usuario.Eliminar(id);
+            var user = await _userManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                await _userManager.DeleteAsync(user);
+            }
+
             return RedirectToAction(nameof(Index));
         }
     }

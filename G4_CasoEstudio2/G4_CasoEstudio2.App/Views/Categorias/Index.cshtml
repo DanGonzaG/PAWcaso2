@@ -46,7 +46,7 @@
                 @Html.DisplayFor(modelItem => item.FechaRegistro)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Usuario.Contraseña)
+                @Html.DisplayFor(modelItem => item.Usuario.PasswordHash)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

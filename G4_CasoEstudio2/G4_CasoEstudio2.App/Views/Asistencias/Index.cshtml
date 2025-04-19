@@ -28,7 +28,7 @@
                 @Html.DisplayFor(modelItem => item.Evento.Descripcion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Usuario.Contraseña)
+                @Html.DisplayFor(modelItem => item.Usuario.PasswordHash)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

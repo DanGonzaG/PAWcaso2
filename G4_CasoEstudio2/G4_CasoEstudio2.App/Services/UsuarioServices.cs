@@ -71,10 +71,15 @@ namespace G4_CasoEstudio2.App.Services
             }
         }
 
-        public async Task<bool> UsuarioExists(int id)
+        public async Task<bool> UsuarioExists(string id)
         {
             await _contexto.Usuarios.AnyAsync(e => e.Id == id);
             return true;
+        }
+
+        public Task<bool> UsuarioExists(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

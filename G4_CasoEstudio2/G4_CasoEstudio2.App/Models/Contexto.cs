@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace G4_CasoEstudio2.App.Models
 {
-    public class Contexto : DbContext
+    public class Contexto : IdentityDbContext<Usuario>
     {
         public Contexto(DbContextOptions<Contexto> options) : base(options) { }
 
@@ -35,10 +36,8 @@ namespace G4_CasoEstudio2.App.Models
                     .HasColumnType("datetime");
 
                 // Relación con Usuario (UsuarioRegistro)
-                entity.HasOne(c => c.Usuario)
-                    .WithMany()
-                    .HasForeignKey(c => c.UsuarioRegistro)
-                    .OnDelete(DeleteBehavior.Restrict);
+                entity.Property(c => c.UsuarioRegistro)
+                .HasMaxLength(450); 
 
                 // Relación uno a muchos con Evento
                 entity.HasMany(c => c.Eventos)
@@ -76,10 +75,8 @@ namespace G4_CasoEstudio2.App.Models
                     .HasDefaultValueSql("GETDATE()");
 
                 // Relación con Usuario (UsuarioRegistro)
-                entity.HasOne(e => e.Usuario)
-                    .WithMany()
-                    .HasForeignKey(e => e.UsuarioRegistro)
-                    .OnDelete(DeleteBehavior.Restrict);
+                entity.Property(e => e.UsuarioRegistro)
+               .HasMaxLength(450);
 
                 // Relación con Categoria
                 entity.HasOne(e => e.Categoria)
@@ -106,32 +103,16 @@ namespace G4_CasoEstudio2.App.Models
                     .OnDelete(DeleteBehavior.Cascade);
 
                 // Relación con Usuario
-                entity.HasOne(a => a.Usuario)
-                    .WithMany(u => u.Asistencias)
-                    .HasForeignKey(a => a.UsuarioId)
-                    .OnDelete(DeleteBehavior.Cascade);
+                entity.Property(a => a.UsuarioId)
+               .HasMaxLength(450);
 
                 // Podrías considerar añadir una clave única compuesta para evitar duplicados
                 entity.HasIndex(a => new { a.EventoId, a.UsuarioId })
                     .IsUnique();
             });
 
-            // Configuración para Usuario
-            modelBuilder.Entity<Usuario>(entity =>
-            {
-                entity.HasKey(u => u.Id);
-                entity.Property(u => u.NombreUsuario).HasMaxLength(200).IsRequired(false);
-                entity.Property(u => u.Correo).HasMaxLength(200).IsRequired(false);
-                entity.Property(u => u.Telefono).HasMaxLength(200).IsRequired(false);
-                entity.Property(u => u.Contraseña).HasMaxLength(200).IsRequired(false); 
-                entity.Property(u => u.Rol).HasMaxLength(200).IsRequired(false);
-
-                // Relación uno a muchos con Asistencia
-                entity.HasMany(u => u.Asistencias)
-                    .WithOne(a => a.Usuario)
-                    .HasForeignKey(a => a.UsuarioId)
-                    .OnDelete(DeleteBehavior.Cascade);
-            });
+           
+            
         }
     }
 }
