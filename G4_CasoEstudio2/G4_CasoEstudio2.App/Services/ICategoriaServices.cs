@@ -8,7 +8,7 @@ namespace G4_CasoEstudio2.App.Services
 
         Task<Categoria> BuscarXid(int? id);
 
-        Task<bool> Modificar(Categoria categoria);
+        Task<bool> Modificar(int id, string nombre, string descripcion, bool estado);
 
         Task<bool> Eliminar(int id);
 

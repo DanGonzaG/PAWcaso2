@@ -17,6 +17,7 @@ namespace G4_CasoEstudio2.App.Controllers
     {
         private readonly ICategoriaServices _categoria;
         private readonly UserManager<Usuario> _userManager;
+       
 
 
 
@@ -117,36 +118,30 @@ namespace G4_CasoEstudio2.App.Controllers
                 return NotFound();
             }
 
-            // Obtener la categoría existente
-            var categoriaExistente = await _categoria.BuscarXid(id);
-            if (categoriaExistente == null)
-            {
-                return NotFound();
-            }
-
-            // Actualizar solo los campos editables
-            categoriaExistente.Nombre = categoria.Nombre;
-            categoriaExistente.Descripcion = categoria.Descripcion;
-            categoriaExistente.Estado = categoria.Estado;
-
-            // Limpieza COMPLETA del ModelState (igual que en Create)
-            ModelState.Remove("FechaRegistro");
-            ModelState.Remove("UsuarioRegistro");
+            // Limpiar validación de campos no editables
             ModelState.Remove("Usuario");
+            ModelState.Remove("UsuarioRegistro");
+            ModelState.Remove("FechaRegistro");
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    // Usar el mismo enfoque que en Create
-                    _contexto.Entry(categoriaExistente).State = EntityState.Modified;
+                    var resultado = await _categoria.Modificar(
+                        categoria.Id,
+                        categoria.Nombre,
+                        categoria.Descripcion,
+                        categoria.Estado
+                    );
 
-                    // Especificar que no debe modificar estos campos
-                    _contexto.Entry(categoriaExistente).Property(x => x.FechaRegistro).IsModified = false;
-                    _contexto.Entry(categoriaExistente).Property(x => x.UsuarioRegistro).IsModified = false;
-
-                    await _contexto.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
+                    if (resultado)
+                    {
+                        return RedirectToAction(nameof(Index));
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "No se pudo actualizar la categoría");
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {

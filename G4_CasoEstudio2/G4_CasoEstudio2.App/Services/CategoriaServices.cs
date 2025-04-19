@@ -67,21 +67,29 @@ namespace G4_CasoEstudio2.App.Services
             return lista;
         }
 
-        public async Task<bool> Modificar(Categoria categoria)
+        public async Task<bool> Modificar(int id, string nombre, string descripcion, bool estado)
         {
+            var categoriaExistente = await BuscarXid(id);
+            if (categoriaExistente == null)
+                return false;
+
+            // Actualizar solo los campos permitidos
+            categoriaExistente.Nombre = nombre;
+            categoriaExistente.Descripcion = descripcion;
+            categoriaExistente.Estado = estado;
+
             try
             {
-                // Marcar solo los campos modificados como cambiados
-                _contexto.Attach(categoria);
-                _contexto.Entry(categoria).Property(x => x.Nombre).IsModified = true;
-                _contexto.Entry(categoria).Property(x => x.Descripcion).IsModified = true;
-                _contexto.Entry(categoria).Property(x => x.Estado).IsModified = true;
+                // Configurar qué campos se modifican
+                _contexto.Entry(categoriaExistente).Property(x => x.Nombre).IsModified = true;
+                _contexto.Entry(categoriaExistente).Property(x => x.Descripcion).IsModified = true;
+                _contexto.Entry(categoriaExistente).Property(x => x.Estado).IsModified = true;
 
                 return await _contexto.SaveChangesAsync() > 0;
             }
-            catch (DbUpdateException dbEx)
+            catch (DbUpdateConcurrencyException)
             {
-                Console.WriteLine($"Error al modificar: {dbEx.InnerException?.Message}");
+                // Manejar concurrencia si es necesario
                 return false;
             }
         }
