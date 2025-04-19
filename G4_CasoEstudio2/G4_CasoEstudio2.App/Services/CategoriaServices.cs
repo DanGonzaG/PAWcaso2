@@ -29,12 +29,16 @@ namespace G4_CasoEstudio2.App.Services
         {
             try
             {
+                // Validación rápida
+                if (string.IsNullOrEmpty(categoria.UsuarioRegistro))
+                    return false;
+
                 _contexto.Categorias.Add(categoria);
-                await _contexto.SaveChangesAsync();
-                return true;
+                return await _contexto.SaveChangesAsync() > 0;
             }
-            catch (Exception ex)
+            catch (DbUpdateException dbEx)
             {
+                Console.WriteLine($"Error de BD: {dbEx.InnerException?.Message}");
                 return false;
             }
         }
@@ -67,12 +71,17 @@ namespace G4_CasoEstudio2.App.Services
         {
             try
             {
-                _contexto.Update(categoria);
-                await _contexto.SaveChangesAsync();
-                return true;
+                // Marcar solo los campos modificados como cambiados
+                _contexto.Attach(categoria);
+                _contexto.Entry(categoria).Property(x => x.Nombre).IsModified = true;
+                _contexto.Entry(categoria).Property(x => x.Descripcion).IsModified = true;
+                _contexto.Entry(categoria).Property(x => x.Estado).IsModified = true;
+
+                return await _contexto.SaveChangesAsync() > 0;
             }
-            catch (Exception ex)
+            catch (DbUpdateException dbEx)
             {
+                Console.WriteLine($"Error al modificar: {dbEx.InnerException?.Message}");
                 return false;
             }
         }

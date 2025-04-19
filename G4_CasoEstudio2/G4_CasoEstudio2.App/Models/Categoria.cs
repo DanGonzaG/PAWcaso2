@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace G4_CasoEstudio2.App.Models
@@ -16,6 +17,7 @@ namespace G4_CasoEstudio2.App.Models
         public bool Estado { get; set; } = true; // Activo por defecto
         [DataType(DataType.DateTime)]
         public DateTime FechaRegistro { get; set; }
+        [ForeignKey("Usuario")]
         public string UsuarioRegistro { get; set; }
         public Usuario Usuario { get; set; }
         public List<Evento> Eventos { get; set; } = new(); // <- Navegación

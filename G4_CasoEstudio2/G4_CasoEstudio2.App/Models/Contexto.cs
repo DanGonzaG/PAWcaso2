@@ -17,29 +17,38 @@ namespace G4_CasoEstudio2.App.Models
         {
             base.OnModelCreating(modelBuilder);
 
-          
+
 
             // Configuración para Categoria
             modelBuilder.Entity<Categoria>(entity =>
             {
                 entity.HasKey(c => c.Id);
+
                 entity.Property(c => c.Nombre)
                     .IsRequired()
                     .HasMaxLength(50);
+
                 entity.Property(c => c.Descripcion)
                     .IsRequired()
                     .HasMaxLength(500);
+
                 entity.Property(c => c.Estado)
                     .IsRequired()
                     .HasDefaultValue(true);
+
                 entity.Property(c => c.FechaRegistro)
                     .HasColumnType("datetime");
 
-                // Relación con Usuario (UsuarioRegistro)
                 entity.Property(c => c.UsuarioRegistro)
-                .HasMaxLength(450); 
+                    .IsRequired()
+                    .HasMaxLength(450);
 
-                // Relación uno a muchos con Evento
+                // Configuración de la relación con AspNetUsers
+                entity.HasOne(c => c.Usuario)
+                    .WithMany()
+                    .HasForeignKey(c => c.UsuarioRegistro)
+                    .OnDelete(DeleteBehavior.Restrict).IsRequired(false); ;
+
                 entity.HasMany(c => c.Eventos)
                     .WithOne(e => e.Categoria)
                     .HasForeignKey(e => e.CategoriaId)
