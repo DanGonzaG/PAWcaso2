@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G4_CasoEstudio2.App", "G4_CasoEstudio2.App\G4_CasoEstudio2.App.csproj", "{BB151BC2-F019-447D-A679-9B3535B03012}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G4_CasoEstudio2.API", "G4_CasoEstudio2.API\G4_CasoEstudio2.API.csproj", "{FC880090-C2B4-4E0F-863B-C29C24C73FD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BB151BC2-F019-447D-A679-9B3535B03012}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB151BC2-F019-447D-A679-9B3535B03012}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB151BC2-F019-447D-A679-9B3535B03012}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC880090-C2B4-4E0F-863B-C29C24C73FD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC880090-C2B4-4E0F-863B-C29C24C73FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC880090-C2B4-4E0F-863B-C29C24C73FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC880090-C2B4-4E0F-863B-C29C24C73FD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
