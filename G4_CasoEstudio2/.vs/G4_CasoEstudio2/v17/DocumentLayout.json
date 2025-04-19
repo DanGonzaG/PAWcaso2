@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -21,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\services\\iusuarioservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\services\\iusuarioservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\controllers\\eventoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\controllers\\eventoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 214,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,7 +54,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\appsettings.json",
               "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\appsettings.json",
@@ -71,13 +67,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Program.cs",
               "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\Program.cs",
               "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Program.cs",
               "RelativeToolTip": "G4_CasoEstudio2.App\\Program.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-17T16:19:28.42Z",
               "EditorCaption": ""
@@ -92,8 +88,7 @@
               "RelativeToolTip": "G4_CasoEstudio2.App\\Controllers\\UsuariosController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAIgAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T18:58:39.749Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-17T18:58:39.749Z"
             },
             {
               "$type": "Document",
@@ -105,8 +100,7 @@
               "RelativeToolTip": "G4_CasoEstudio2.App\\Services\\UsuarioServices.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T18:59:30.175Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-17T18:59:30.175Z"
             },
             {
               "$type": "Document",
@@ -118,21 +112,7 @@
               "RelativeToolTip": "G4_CasoEstudio2.App\\Services\\IUsuarioServices.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T18:59:17.421Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "EventoesController.cs",
-              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Controllers\\EventoesController.cs",
-              "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\Controllers\\EventoesController.cs",
-              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Controllers\\EventoesController.cs",
-              "RelativeToolTip": "G4_CasoEstudio2.App\\Controllers\\EventoesController.cs",
-              "ViewState": "AgIAAH0AAAAAAAAAAAAAwIkAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T16:51:54.673Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-17T18:59:17.421Z"
             }
           ]
         }
