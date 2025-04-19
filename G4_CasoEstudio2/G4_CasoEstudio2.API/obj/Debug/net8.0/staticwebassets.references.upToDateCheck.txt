@@ -1,0 +1,2 @@
+D:\Github\PAWcaso2\G4_CasoEstudio2\G4_CasoEstudio2.App\obj\Debug\net8.0\staticwebassets.build.json
+D:\Github\PAWcaso2\G4_CasoEstudio2\G4_CasoEstudio2.App\obj\Debug\net8.0\staticwebassets.build.json
