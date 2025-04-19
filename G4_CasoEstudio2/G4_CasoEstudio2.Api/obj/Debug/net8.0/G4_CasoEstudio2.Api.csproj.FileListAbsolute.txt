@@ -1,0 +1,8 @@
+D:\Github\PAWcaso2\G4_CasoEstudio2\G4_CasoEstudio2.Api\obj\Debug\net8.0\G4_CasoEstudio2.Api.csproj.AssemblyReference.cache
+D:\Github\PAWcaso2\G4_CasoEstudio2\G4_CasoEstudio2.Api\obj\Debug\net8.0\G4_CasoEstudio2.Api.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github\PAWcaso2\G4_CasoEstudio2\G4_CasoEstudio2.Api\obj\Debug\net8.0\G4_CasoEstudio2.Api.AssemblyInfoInputs.cache
+D:\Github\PAWcaso2\G4_CasoEstudio2\G4_CasoEstudio2.Api\obj\Debug\net8.0\G4_CasoEstudio2.Api.AssemblyInfo.cs
+D:\Github\PAWcaso2\G4_CasoEstudio2\G4_CasoEstudio2.Api\obj\Debug\net8.0\G4_CasoEstudio2.Api.csproj.CoreCompileInputs.cache
+D:\Github\PAWcaso2\G4_CasoEstudio2\G4_CasoEstudio2.Api\obj\Debug\net8.0\G4_CasoEstudio2.Api.MvcApplicationPartsAssemblyInfo.cs
+D:\Github\PAWcaso2\G4_CasoEstudio2\G4_CasoEstudio2.Api\obj\Debug\net8.0\G4_CasoEstudio2.Api.MvcApplicationPartsAssemblyInfo.cache
+D:\Github\PAWcaso2\G4_CasoEstudio2\G4_CasoEstudio2.Api\obj\Debug\net8.0\G4_CasoEstudio2.Api.sourcelink.json

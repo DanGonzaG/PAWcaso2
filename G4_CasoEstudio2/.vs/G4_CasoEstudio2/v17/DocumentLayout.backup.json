@@ -1,26 +1,42 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Proyecto_caso2\\G4_CasoEstudio2\\",
+  "WorkspaceRootPath": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|c:\\proyecto_caso2\\g4_casoestudio2\\g4_casoestudio2.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|c:\\proyecto_caso2\\g4_casoestudio2\\g4_casoestudio2.app\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|c:\\proyecto_caso2\\g4_casoestudio2\\g4_casoestudio2.app\\controllers\\eventoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6845D363-76A1-4864-B4B3-EA825B7EFC26}|G4_CasoEstudio2.Api\\G4_CasoEstudio2.Api.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6845D363-76A1-4864-B4B3-EA825B7EFC26}|G4_CasoEstudio2.Api\\G4_CasoEstudio2.Api.csproj|solutionrelative:g4_casoestudio2.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6845D363-76A1-4864-B4B3-EA825B7EFC26}|G4_CasoEstudio2.Api\\G4_CasoEstudio2.Api.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6845D363-76A1-4864-B4B3-EA825B7EFC26}|G4_CasoEstudio2.Api\\G4_CasoEstudio2.Api.csproj|solutionrelative:g4_casoestudio2.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6845D363-76A1-4864-B4B3-EA825B7EFC26}|G4_CasoEstudio2.Api\\G4_CasoEstudio2.Api.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.api\\g4_casoestudio2.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{6845D363-76A1-4864-B4B3-EA825B7EFC26}|G4_CasoEstudio2.Api\\G4_CasoEstudio2.Api.csproj|solutionrelative:g4_casoestudio2.api\\g4_casoestudio2.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\controllers\\eventoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\controllers\\eventoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|c:\\proyecto_caso2\\g4_casoestudio2\\g4_casoestudio2.app\\services\\usuarioservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\services\\iusuarioservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\services\\iusuarioservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\services\\usuarioservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\services\\usuarioservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|c:\\proyecto_caso2\\g4_casoestudio2\\g4_casoestudio2.app\\services\\iusuarioservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\services\\iusuarioservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|d:\\github\\pawcaso2\\g4_casoestudio2\\g4_casoestudio2.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB151BC2-F019-447D-A679-9B3535B03012}|G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj|solutionrelative:g4_casoestudio2.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,45 +46,113 @@
       "DocumentGroups": [
         {
           "DockedWidth": 214,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 10,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.Api\\Program.cs",
+              "RelativeDocumentMoniker": "G4_CasoEstudio2.Api\\Program.cs",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.Api\\Program.cs",
+              "RelativeToolTip": "G4_CasoEstudio2.Api\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T14:33:23.206Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "G4_CasoEstudio2.Api\\appsettings.json",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.Api\\appsettings.json",
+              "RelativeToolTip": "G4_CasoEstudio2.Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-19T14:32:55.699Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\appsettings.json",
+              "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\appsettings.json",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\appsettings.json",
+              "RelativeToolTip": "G4_CasoEstudio2.App\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-19T14:32:46.089Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "G4_CasoEstudio2.Api",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.Api\\G4_CasoEstudio2.Api.csproj",
+              "RelativeDocumentMoniker": "G4_CasoEstudio2.Api\\G4_CasoEstudio2.Api.csproj",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.Api\\G4_CasoEstudio2.Api.csproj",
+              "RelativeToolTip": "G4_CasoEstudio2.Api\\G4_CasoEstudio2.Api.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-19T14:23:24.978Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Proyecto_caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Program.cs",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Program.cs",
               "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\Program.cs",
-              "ToolTip": "C:\\Proyecto_caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Program.cs",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Program.cs",
               "RelativeToolTip": "G4_CasoEstudio2.App\\Program.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAAACIAAABAAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAIBJwCIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-17T16:19:28.42Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "UsuariosController.cs",
-              "DocumentMoniker": "C:\\Proyecto_caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Controllers\\UsuariosController.cs",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Controllers\\UsuariosController.cs",
               "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\Controllers\\UsuariosController.cs",
-              "ToolTip": "C:\\Proyecto_caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Controllers\\UsuariosController.cs",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Controllers\\UsuariosController.cs",
               "RelativeToolTip": "G4_CasoEstudio2.App\\Controllers\\UsuariosController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIgAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAmwH8AAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-17T18:58:39.749Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "UsuarioServices.cs",
-              "DocumentMoniker": "C:\\Proyecto_caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Services\\UsuarioServices.cs",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Services\\UsuarioServices.cs",
               "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\Services\\UsuarioServices.cs",
-              "ToolTip": "C:\\Proyecto_caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Services\\UsuarioServices.cs",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Services\\UsuarioServices.cs",
               "RelativeToolTip": "G4_CasoEstudio2.App\\Services\\UsuarioServices.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -77,11 +161,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "IUsuarioServices.cs",
-              "DocumentMoniker": "C:\\Proyecto_caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Services\\IUsuarioServices.cs",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Services\\IUsuarioServices.cs",
               "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\Services\\IUsuarioServices.cs",
-              "ToolTip": "C:\\Proyecto_caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Services\\IUsuarioServices.cs",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Services\\IUsuarioServices.cs",
               "RelativeToolTip": "G4_CasoEstudio2.App\\Services\\IUsuarioServices.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -90,13 +174,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "EventoesController.cs",
-              "DocumentMoniker": "C:\\Proyecto_caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Controllers\\EventoesController.cs",
+              "DocumentMoniker": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Controllers\\EventoesController.cs",
               "RelativeDocumentMoniker": "G4_CasoEstudio2.App\\Controllers\\EventoesController.cs",
-              "ToolTip": "C:\\Proyecto_caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Controllers\\EventoesController.cs",
+              "ToolTip": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\Controllers\\EventoesController.cs",
               "RelativeToolTip": "G4_CasoEstudio2.App\\Controllers\\EventoesController.cs",
-              "ViewState": "AgIAAH0AAAAAAAAAAAAAwIkAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIkAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-17T16:51:54.673Z",
               "EditorCaption": ""

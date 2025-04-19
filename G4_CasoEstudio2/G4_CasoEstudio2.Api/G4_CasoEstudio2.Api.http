@@ -1,0 +1,6 @@
+@G4_CasoEstudio2.Api_HostAddress = http://localhost:5042
+
+GET {{G4_CasoEstudio2.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Proyecto_caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj": {}
+    "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj": {}
   },
   "projects": {
-    "C:\\Proyecto_caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj": {
+    "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyecto_caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj",
+        "projectUniqueName": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj",
         "projectName": "G4_CasoEstudio2.App",
-        "projectPath": "C:\\Proyecto_caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj",
-        "packagesPath": "C:\\Users\\50664\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyecto_caso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\obj\\",
+        "projectPath": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\G4_CasoEstudio2.App.csproj",
+        "packagesPath": "C:\\Users\\jpied\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\PAWcaso2\\G4_CasoEstudio2\\G4_CasoEstudio2.App\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\50664\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jpied\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -40,7 +43,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -96,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.408/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
