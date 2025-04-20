@@ -15,5 +15,7 @@ namespace G4_CasoEstudio2.App.Services
         Task<IEnumerable<Usuario>> Listar();
 
         Task<bool> UsuarioExists(int id);
+
+        //Task<Dictionary<string, string>> ObtenerNombresPorIdsAsync(IEnumerable<string> ids);
     }
 }

@@ -63,8 +63,9 @@ namespace G4_CasoEstudio2.App.Services
 
         public async Task<IEnumerable<Categoria>> Listar()
         {
-            var lista = await _contexto.Categorias.ToListAsync();
-            return lista;
+            return await _contexto.Categorias
+                                    .Include(c => c.Usuario)  // Esto carga la información del usuario
+                                    .ToListAsync();
         }
 
         public async Task<bool> Modificar(int id, string nombre, string descripcion, bool estado)

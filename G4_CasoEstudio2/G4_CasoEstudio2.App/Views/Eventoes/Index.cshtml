@@ -38,10 +38,8 @@
                 <td>@Html.DisplayFor(modelItem => item.Ubicacion)</td>
                 <td>@Html.DisplayFor(modelItem => item.CupoMaximo)</td>
                 <td>@(item.Estado ? "Activo" : "Inactivo")</td>
-                <td>
-                    @item.Usuario?.NombreCompleto <!-- Muestra el nombre en lugar de la contraseña -->
-                </td>
-                <td>@item.Categoria?.Nombre</td> <!-- Muestra el nombre en lugar de la descripción -->
+                <td>@item.Usuario?.NombreCompleto</td>
+                <td>@item.Categoria?.Nombre</td>
                 <td>
                     <div class="btn-group" role="group">
                         <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a>

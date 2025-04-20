@@ -40,14 +40,15 @@ namespace G4_CasoEstudio2.App.Models
                     .HasColumnType("datetime");
 
                 entity.Property(c => c.UsuarioRegistro)
-                    .IsRequired()
+                    .IsRequired(false)
                     .HasMaxLength(450);
 
                 // Configuración de la relación con AspNetUsers
                 entity.HasOne(c => c.Usuario)
-                    .WithMany()
-                    .HasForeignKey(c => c.UsuarioRegistro)
-                    .OnDelete(DeleteBehavior.Restrict).IsRequired(false); ;
+                      .WithMany()
+                      .HasForeignKey(c => c.UsuarioRegistro)
+                      .OnDelete(DeleteBehavior.Restrict)
+                      .IsRequired(false);
 
                 entity.HasMany(c => c.Eventos)
                     .WithOne(e => e.Categoria)
@@ -86,6 +87,11 @@ namespace G4_CasoEstudio2.App.Models
                 // Relación con Usuario (UsuarioRegistro)
                 entity.Property(e => e.UsuarioRegistro)
                .HasMaxLength(450);
+
+                entity.HasOne(e => e.Usuario)
+                      .WithMany()
+                      .HasForeignKey(e => e.UsuarioRegistro)
+                      .OnDelete(DeleteBehavior.Restrict);
 
                 // Relación con Categoria
                 entity.HasOne(e => e.Categoria)

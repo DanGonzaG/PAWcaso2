@@ -15,8 +15,10 @@ namespace G4_CasoEstudio2.App.Services
 
         public async Task<Evento> BuscarXid(int? id)
         {
-            var buscarEventos = await _contexto.Eventos.FindAsync(id);
-            return buscarEventos;
+            return await _contexto.Eventos
+                                  .Include(e => e.Usuario)
+                                  .Include(e => e.Categoria)
+                                  .FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task<bool> Crear(Evento evento)
@@ -59,8 +61,10 @@ namespace G4_CasoEstudio2.App.Services
 
         public async Task<IEnumerable<Evento>> Listar()
         {
-            var lista = await _contexto.Eventos.ToListAsync();
-            return lista;
+            return await _contexto.Eventos
+                                .Include(e => e.Usuario)       // Carga el usuario que registró el evento
+                                .Include(e => e.Categoria)     // Carga la categoría del evento
+                                .ToListAsync();
         }
 
         public async Task<bool> Modificar(Evento evento)

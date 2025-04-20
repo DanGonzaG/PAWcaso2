@@ -17,8 +17,10 @@ namespace G4_CasoEstudio2.App.Models
         public bool Estado { get; set; } = true; // Activo por defecto
         [DataType(DataType.DateTime)]
         public DateTime FechaRegistro { get; set; }
-        [ForeignKey("Usuario")]
+        
         public string UsuarioRegistro { get; set; }
+
+        [ForeignKey("UsuarioRegistro")]
         public Usuario Usuario { get; set; }
         public List<Evento> Eventos { get; set; } = new(); // <- Navegación
     }
