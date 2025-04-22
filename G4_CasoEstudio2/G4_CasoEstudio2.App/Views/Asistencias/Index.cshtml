@@ -1,41 +1,40 @@
 ﻿@model IEnumerable<G4_CasoEstudio2.App.Models.Asistencia>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de Asistencias";
 }
 
-<h1>Index</h1>
+<h1>Lista de Asistencias</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Evento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Usuario)
-            </th>
-            <th></th>
+            <th>Evento</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Usuario</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Evento.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Usuario.PasswordHash)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(item.Evento?.Titulo ?? "N/A")</td>
+                <td>@(item.Evento?.Fecha.ToShortDateString() ?? "N/A")</td>
+                <td>@(item.Evento?.Hora.ToString() ?? "N/A")</td>
+                <td>@(item.Usuario?.Email ?? "N/A")</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@if (User.IsInRole("Administrador") || User.IsInRole("Usuario"))
+{
+    <div class="mt-3">
+        <a asp-action="Create" class="btn btn-primary">Crear Nueva Asistencia</a>
+    </div>
+}

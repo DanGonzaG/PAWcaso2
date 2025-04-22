@@ -9,6 +9,8 @@ using G4_CasoEstudio2.App.Models;
 using System.Security.Claims;
 using G4_CasoEstudio2.App.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+using System.Diagnostics;
 
 namespace G4_CasoEstudio2.App.Controllers
 {
@@ -28,11 +30,34 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Eventoes
-        //[Authorize(Roles = "Administrador")]
+        [Authorize]
         public async Task<IActionResult> Index()
         {
-            
-            return View(await _evento.Listar());
+
+            var usuarioActual = await _userManager.GetUserAsync(User);
+
+            if (User.IsInRole("Administrador"))
+            {
+                // Administrador ve todos los eventos
+                return View(await _evento.Listar());
+            }
+            else if (User.IsInRole("Organizador"))
+            {
+                // Organizador ve solo sus eventos
+                var eventosDelOrganizador = await _contexto.Eventos
+                    .Where(e => e.UsuarioRegistro == usuarioActual.Id)
+                    .ToListAsync();
+
+                return View(eventosDelOrganizador);
+            }
+
+            // Otros roles (si los hay) pueden ver solo eventos activos
+            var eventosPublicos = await _contexto.Eventos
+                .Where(e => e.Estado)
+                .ToListAsync();
+
+            return View(eventosPublicos);
+
         }
 
         // GET: Eventoes/Details/5
@@ -44,16 +69,18 @@ namespace G4_CasoEstudio2.App.Controllers
                 return NotFound();
             }
 
-            // Carga el evento incluyendo las relaciones con Usuario y Categoria
             var evento = await _contexto.Eventos
-                .Include(e => e.Usuario)      // Carga el usuario que registró el evento
-                .Include(e => e.Categoria)    // Carga la categoría del evento
+                .Include(e => e.Usuario)
+                .Include(e => e.Asistencias)
+                    .ThenInclude(a => a.Usuario)
+                .Include(e => e.Categoria)
                 .FirstOrDefaultAsync(e => e.Id == id);
 
             if (evento == null)
             {
                 return NotFound();
             }
+
             return View(evento);
         }
 

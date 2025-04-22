@@ -80,5 +80,31 @@ namespace G4_CasoEstudio2.App.Services
                 return false;
             }
         }
+
+        public async Task<IEnumerable<Evento>> ListarEventosPorOrganizador(string organizadorId)
+        {
+            return await _contexto.Eventos
+                .Include(e => e.Categoria)
+                .Include(e => e.Asistencias)
+                .Where(e => e.UsuarioRegistro == organizadorId)
+                .OrderByDescending(e => e.Fecha)
+                .ThenBy(e => e.Hora)
+                .ToListAsync();
+        }
+
+        public async Task<bool> EsOrganizadorEvento(string usuarioId, int eventoId)
+        {
+            return await _contexto.Eventos
+                .AnyAsync(e => e.Id == eventoId && e.UsuarioRegistro == usuarioId);
+        }
+
+        public async Task<List<Evento>> EventosConInscritosPorOrganizador(string organizadorId)
+        {
+            return await _contexto.Eventos
+                .Where(e => e.UsuarioRegistro == organizadorId)
+                .Include(e => e.Asistencias)
+                    .ThenInclude(a => a.Usuario)
+                .ToListAsync();
+        }
     }
 }

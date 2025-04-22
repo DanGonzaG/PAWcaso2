@@ -78,6 +78,39 @@
             @Model.Categoria?.Nombre <!-- Muestra el nombre de la categoría -->
         </dd>
     </dl>
+    <div>
+        <h4>Usuarios Registrados</h4>
+        <hr />
+
+        @if (Model.Asistencias != null && Model.Asistencias.Any())
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Fecha de Registro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var asistencia in Model.Asistencias)
+                    {
+                        <tr>
+                            <td>@(asistencia.Usuario?.NombreCompleto ?? "N/A")</td>
+                            <td>@(asistencia.Usuario?.Email ?? "N/A")</td>
+                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <p>Total de asistentes: @Model.Asistencias.Count</p>
+        }
+        else
+        {
+            <p>No hay usuarios registrados para este evento.</p>
+        }
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |

@@ -15,5 +15,7 @@ namespace G4_CasoEstudio2.App.Services
         Task<IEnumerable<Asistencia>> Listar();
 
         Task<bool> AsistenciaExists(int id);
+
+        Task<List<Asistencia>> ListarPorOrganizador(string organizadorId);
     }
 }

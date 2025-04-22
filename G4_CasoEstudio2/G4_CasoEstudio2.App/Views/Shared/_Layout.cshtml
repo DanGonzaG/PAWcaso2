@@ -48,6 +48,23 @@
                                     <a class="nav-link text-dark" asp-controller="Asistencias" asp-action="Index">Ver Asistencias</a>
                                 </li>
                             }
+                            @if (User.IsInRole("Organizador"))
+                            {
+                           
+                               
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Eventoes" asp-action="Index">Ver Eventos</a>
+                                </li>
+                               
+                            }
+                            @if (User.IsInRole("Usuario"))
+                            {
+                           
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Asistencias" asp-action="Index">Ver Asistencias</a>
+                                </li>
+                            }
                         }
                     </ul>
                     <partial name="_LoginPartial" />

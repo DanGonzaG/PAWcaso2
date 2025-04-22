@@ -21,7 +21,7 @@
             <th>@Html.DisplayNameFor(model => model.Ubicacion)</th>
             <th>Cupo Máximo</th>
             <th>@Html.DisplayNameFor(model => model.Estado)</th>
-            <th>Organizador</th>
+            
             <th>Categoría</th>
             <th>Acciones</th>
         </tr>
@@ -38,7 +38,7 @@
                 <td>@Html.DisplayFor(modelItem => item.Ubicacion)</td>
                 <td>@Html.DisplayFor(modelItem => item.CupoMaximo)</td>
                 <td>@(item.Estado ? "Activo" : "Inactivo")</td>
-                <td>@item.Usuario?.NombreCompleto</td>
+               
                 <td>@item.Categoria?.Nombre</td>
                 <td>
                     <div class="btn-group" role="group">
