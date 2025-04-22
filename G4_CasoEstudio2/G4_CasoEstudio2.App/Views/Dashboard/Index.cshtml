@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2>Dashboard de Administración</h2>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Usuarios registrados</h5>
+                <p class="card-text fs-3">@ViewBag.TotalUsuarios</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Eventos creados</h5>
+                <p class="card-text fs-3">@ViewBag.TotalEventos</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Asistencias registradas</h5>
+                <p class="card-text fs-3">@ViewBag.TotalAsistencias</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4 class="mt-4">Top 5 eventos con más asistencia</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Fecha</th>
+            <th>Total Asistencias</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.TopEventos)
+        {
+            <tr>
+                <td>@item.Evento.Titulo</td>
+                <td>@item.Evento.Fecha.ToShortDateString()</td>
+                <td>@item.Total</td>
+            </tr>
+        }
+    </tbody>
+</table>
