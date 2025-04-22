@@ -9,25 +9,32 @@ using G4_CasoEstudio2.App.Models;
 using G4_CasoEstudio2.App.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication;
 
 namespace G4_CasoEstudio2.App.Controllers
 {
-    [Authorize(Roles = "Administrador")]
+    [Authorize]
     public class UsuariosController : Controller
     {
         private readonly UserManager<Usuario> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SignInManager<Usuario> _signInManager;
+        private readonly ILogger<UsuariosController> _logger;
 
         public UsuariosController(
             UserManager<Usuario> userManager,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            ILogger<UsuariosController> logger,
+            SignInManager<Usuario> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _logger = logger;
+            _signInManager = signInManager;
         }
 
         // GET: Usuarios
-        //[Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Index()
         {
             var usuarios = await _userManager.Users.ToListAsync();
@@ -35,7 +42,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Usuarios/Details/5
-        //[Authorize(Roles = "Administrador")]
+        [Authorize]
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -92,7 +99,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Usuarios/Edit/5
-        //[Authorize(Roles = "Administrador")]
+        [Authorize]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -150,7 +157,7 @@ namespace G4_CasoEstudio2.App.Controllers
                     await _userManager.RemoveFromRolesAsync(user, currentRoles);
                     await _userManager.AddToRoleAsync(user, rol);
 
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction("Details", new { id = user.Id });
                 }
 
                 foreach (var error in result.Errors)
@@ -164,7 +171,7 @@ namespace G4_CasoEstudio2.App.Controllers
         }
 
         // GET: Usuarios/Delete/5
-        //[Authorize(Roles = "Administrador")]
+        [Authorize]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -182,18 +189,76 @@ namespace G4_CasoEstudio2.App.Controllers
             return View(usuario);
         }
 
-        // POST: Usuarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var user = await _userManager.FindByIdAsync(id);
-            if (user != null)
+            try
             {
-                await _userManager.DeleteAsync(user);
-            }
+                // Validación básica
+                if (string.IsNullOrEmpty(id))
+                {
+                    return NotFound();
+                }
 
-            return RedirectToAction(nameof(Index));
+                // Obtener usuario a eliminar
+                var userToDelete = await _userManager.FindByIdAsync(id);
+                if (userToDelete == null)
+                {
+                    return NotFound();
+                }
+
+                // Verificar si es el usuario actual
+                var currentUserId = _userManager.GetUserId(User);
+                bool isCurrentUser = currentUserId == id;
+
+                // Eliminar el usuario
+                var deleteResult = await _userManager.DeleteAsync(userToDelete);
+
+                if (!deleteResult.Succeeded)
+                {
+                    // Manejar errores de eliminación
+                    foreach (var error in deleteResult.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                    return View("Delete", userToDelete);
+                }
+
+                // Si es el usuario actual, cerrar sesión
+                if (isCurrentUser)
+                {
+                    try
+                    {
+                        // Cerrar sesión de forma segura
+                        await HttpContext.SignOutAsync(IdentityConstants.ApplicationScheme);
+                        HttpContext.Session.Clear();
+
+                        // Eliminar cookies de autenticación
+                        Response.Cookies.Delete(".AspNetCore.Identity.Application");
+                        Response.Cookies.Delete(".AspNetCore.Session");
+
+                        // Redirigir a Home/Index
+                        return RedirectToAction("Index", "Home");
+                    }
+                    catch (Exception signOutEx)
+                    {
+                        _logger?.LogError(signOutEx, "Error al cerrar sesión después de eliminar usuario");
+                        // Aunque falle el cierre de sesión, redirigir a Home
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+
+                // Redirigir a la lista de usuarios si no es el usuario actual
+                return RedirectToAction("Index", "Usuarios");
+            }
+            catch (Exception ex)
+            {
+                _logger?.LogError(ex, "Error crítico al eliminar usuario con ID {UserId}", id);
+                // Redirigir a página de error con mensaje específico
+                TempData["ErrorMessage"] = "Ocurrió un error al procesar tu solicitud.";
+                return RedirectToAction("Error", "Home");
+            }
         }
     }
 }

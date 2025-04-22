@@ -15,5 +15,8 @@ namespace G4_CasoEstudio2.App.Services
         Task<IEnumerable<Evento>> Listar();
 
         Task<bool> EventoExists(int id);
+
+        Task<IEnumerable<Evento>> ListarEventosPorOrganizador(string organizadorId);
+        Task<bool> EsOrganizadorEvento(string usuarioId, int eventoId);
     }
 }

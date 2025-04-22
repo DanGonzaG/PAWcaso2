@@ -1,30 +1,39 @@
-﻿@model G4_CasoEstudio2.App.Models.Asistencia
+﻿@model G4_CasoEstudio2.App.Models.Evento
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles del Evento";
 }
 
-<h1>Details</h1>
+<h4>Usuarios Registrados (@Model.Asistencias.Count/@Model.CupoMaximo)</h4>
 
-<div>
-    <h4>Asistencia</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Evento)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Evento.Descripcion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Usuario)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Usuario.PasswordHash)
-        </dd>
-    </dl>
+<div class="alert alert-info">
+    <strong>Debug Info:</strong><br>
+    Asistencias es null: @(Model.Asistencias == null)<br>
+    Cantidad de asistencias: @Model.Asistencias.Count<br>
+    Primer usuario cargado: @(Model.Asistencias.FirstOrDefault()?.Usuario != null)
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+@if (Model.Asistencias.Any())
+{
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Asistencia ID</th>
+                <th>Usuario ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var asistencia in Model.Asistencias)
+            {
+                <tr>
+                    <td>@asistencia.Id</td>
+                    <td>@asistencia.UsuarioId</td>
+                    <td>@(asistencia.Usuario?.NombreCompleto ?? "NULO")</td>
+                    <td>@(asistencia.Usuario?.Email ?? "NULO")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

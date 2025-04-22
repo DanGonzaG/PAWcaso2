@@ -29,12 +29,16 @@ namespace G4_CasoEstudio2.App.Services
         {
             try
             {
+                // Validación rápida
+                if (string.IsNullOrEmpty(categoria.UsuarioRegistro))
+                    return false;
+
                 _contexto.Categorias.Add(categoria);
-                await _contexto.SaveChangesAsync();
-                return true;
+                return await _contexto.SaveChangesAsync() > 0;
             }
-            catch (Exception ex)
+            catch (DbUpdateException dbEx)
             {
+                Console.WriteLine($"Error de BD: {dbEx.InnerException?.Message}");
                 return false;
             }
         }
@@ -59,20 +63,34 @@ namespace G4_CasoEstudio2.App.Services
 
         public async Task<IEnumerable<Categoria>> Listar()
         {
-            var lista = await _contexto.Categorias.ToListAsync();
-            return lista;
+            return await _contexto.Categorias
+                                    .Include(c => c.Usuario)  // Esto carga la información del usuario
+                                    .ToListAsync();
         }
 
-        public async Task<bool> Modificar(Categoria categoria)
+        public async Task<bool> Modificar(int id, string nombre, string descripcion, bool estado)
         {
+            var categoriaExistente = await BuscarXid(id);
+            if (categoriaExistente == null)
+                return false;
+
+            // Actualizar solo los campos permitidos
+            categoriaExistente.Nombre = nombre;
+            categoriaExistente.Descripcion = descripcion;
+            categoriaExistente.Estado = estado;
+
             try
             {
-                _contexto.Update(categoria);
-                await _contexto.SaveChangesAsync();
-                return true;
+                // Configurar qué campos se modifican
+                _contexto.Entry(categoriaExistente).Property(x => x.Nombre).IsModified = true;
+                _contexto.Entry(categoriaExistente).Property(x => x.Descripcion).IsModified = true;
+                _contexto.Entry(categoriaExistente).Property(x => x.Estado).IsModified = true;
+
+                return await _contexto.SaveChangesAsync() > 0;
             }
-            catch (Exception ex)
+            catch (DbUpdateConcurrencyException)
             {
+                // Manejar concurrencia si es necesario
                 return false;
             }
         }

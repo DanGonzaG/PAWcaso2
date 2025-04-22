@@ -64,19 +64,53 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.FechaRegistro)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Usuario)
+         <dt class="col-sm-2">
+            Registrado por
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Usuario.PasswordHash)
+        <dd class="col-sm-10">
+            @Model.Usuario?.NombreCompleto <!-- Muestra el nombre del usuario -->
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Categoria)
+
+        <dt class="col-sm-2">
+            Categoría
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Categoria.Descripcion)
+        <dd class="col-sm-10">
+            @Model.Categoria?.Nombre <!-- Muestra el nombre de la categoría -->
         </dd>
     </dl>
+    <div>
+        <h4>Usuarios Registrados</h4>
+        <hr />
+
+        @if (Model.Asistencias != null && Model.Asistencias.Any())
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Fecha de Registro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var asistencia in Model.Asistencias)
+                    {
+                        <tr>
+                            <td>@(asistencia.Usuario?.NombreCompleto ?? "N/A")</td>
+                            <td>@(asistencia.Usuario?.Email ?? "N/A")</td>
+                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <p>Total de asistentes: @Model.Asistencias.Count</p>
+        }
+        else
+        {
+            <p>No hay usuarios registrados para este evento.</p>
+        }
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |

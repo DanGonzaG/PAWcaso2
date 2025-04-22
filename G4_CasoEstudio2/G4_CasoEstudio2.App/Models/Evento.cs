@@ -42,7 +42,7 @@ namespace G4_CasoEstudio2.App.Models
         [DataType(DataType.DateTime)]
         public DateTime FechaRegistro { get; set; } = DateTime.Now;
 
-        public int UsuarioRegistro { get; set; }
+        public string UsuarioRegistro { get; set; }
         public Usuario Usuario { get; set; } // <- Navegación
 
         [Required]

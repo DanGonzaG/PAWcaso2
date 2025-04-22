@@ -116,7 +116,16 @@ namespace G4_CasoEstudio2.App.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    var user = await _signInManager.UserManager.FindByEmailAsync(Input.Email);
+
+                    if (await _signInManager.UserManager.IsInRoleAsync(user, "Administrador"))
+                    {
+                        return RedirectToAction("Index", "Usuarios", new { id = user.Id });
+                    }
+                    else
+                    {
+                        return RedirectToAction("Details", "Usuarios", new { id = user.Id });
+                    }
                 }
                 if (result.RequiresTwoFactor)
                 {

@@ -8,24 +8,52 @@ using Microsoft.EntityFrameworkCore;
 using G4_CasoEstudio2.App.Models;
 using Microsoft.AspNetCore.Authorization;
 using G4_CasoEstudio2.App.Services;
+using System.Security.Claims;
 
 namespace G4_CasoEstudio2.App.Controllers
 {
     public class AsistenciasController : Controller
     {
         private readonly IAsistenciaServices _asistencia;
+        private readonly Contexto _context;
 
-        public AsistenciasController(IAsistenciaServices asistencia)
+        public AsistenciasController(IAsistenciaServices asistencia, Contexto contexto)
         {
             _asistencia = asistencia;
+            _context = contexto;
         }
 
 
         // GET: Asistencias
-        //[Authorize(Roles = "Administrador")]
+
+        [Authorize] // Asegura que solo usuarios autenticados puedan acceder
         public async Task<IActionResult> Index()
         {
-            return View(await _asistencia.Listar());
+            IQueryable<Asistencia> query = _context.Asistencias;
+
+            // Filtrado por rol
+            if (User.IsInRole("Organizador"))
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                query = query.Where(a => a.Evento.UsuarioRegistro == userId);
+            }
+            else if (!User.IsInRole("Administrador"))
+            {
+                // Usuario normal solo ve sus propias asistencias
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                query = query.Where(a => a.UsuarioId == userId);
+            }
+
+            // Carga relacionada optimizada con Include
+            query = query.Include(a => a.Evento);
+
+            if (User.IsInRole("Administrador") || User.IsInRole("Organizador") || !User.IsInRole("Organizador"))
+            {
+                query = query.Include(a => a.Usuario);
+            }
+
+            var asistencias = await query.ToListAsync();
+            return View(asistencias);
         }
 
 
@@ -40,8 +68,13 @@ namespace G4_CasoEstudio2.App.Controllers
 
         // GET: Asistencias/Create
         //[Authorize(Roles = "Administrador")]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var eventosDisponibles = await _context.Eventos
+                .Where(e => e.Estado)
+                .ToListAsync();
+
+            ViewBag.EventoId = new SelectList(eventosDisponibles, "Id", "Titulo");
             return View();
         }
 
@@ -52,16 +85,75 @@ namespace G4_CasoEstudio2.App.Controllers
         //[Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,EventoId,UsuarioId")] Asistencia asistencia)
+        public async Task<IActionResult> Create([Bind("EventoId")] Asistencia asistencia)
         {
+            ModelState.Remove("Evento");
+            ModelState.Remove("Usuario");
+            ModelState.Remove("UsuarioId");
+
             if (ModelState.IsValid)
             {
+                try
+                {
+                    var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
-                await _asistencia.crear(asistencia);
-                return RedirectToAction(nameof(Index));
+                    if (string.IsNullOrEmpty(userId))
+                    {
+                        return Forbid(); // o redirigir al login si es necesario
+                    }
+
+                    asistencia.UsuarioId = userId;
+
+                    // Validar cupo
+                    var evento = await _context.Eventos.FindAsync(asistencia.EventoId);
+                    if (evento == null || !evento.Estado)
+                    {
+                        ModelState.AddModelError("", "El evento no existe o no está disponible.");
+                    }
+                    else
+                    {
+                        var registrados = await _context.Asistencias
+                            .CountAsync(a => a.EventoId == asistencia.EventoId);
+
+                        if (registrados >= evento.CupoMaximo)
+                        {
+                            ModelState.AddModelError("", "No hay cupos disponibles para este evento.");
+                        }
+                        else
+                        {
+                            // Validar si ya se registró antes este usuario
+                            bool yaRegistrado = await _context.Asistencias
+                                .AnyAsync(a => a.EventoId == asistencia.EventoId && a.UsuarioId == userId);
+
+                            if (yaRegistrado)
+                            {
+                                ModelState.AddModelError("", "Ya estás registrado para este evento.");
+                            }
+                            else
+                            {
+                                await _asistencia.crear(asistencia);
+                                return RedirectToAction(nameof(Index));
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
             }
+
+            // Recarga el ViewBag por si la vista necesita volver a mostrarse
+            var eventosDisponibles = await _context.Eventos
+                .Where(e => e.Estado)
+                .ToListAsync();
+
+            ViewBag.EventoId = new SelectList(eventosDisponibles, "Id", "Titulo", asistencia.EventoId);
+
             return View(asistencia);
         }
+
+
 
         // GET: Asistencias/Edit/5
         //[Authorize(Roles = "Administrador")]
@@ -142,6 +234,14 @@ namespace G4_CasoEstudio2.App.Controllers
         {
             await _asistencia.Eliminar(id);
             return RedirectToAction(nameof(Index));
+        }
+
+        [Authorize(Roles = "Organizador")]
+        public async Task<IActionResult> MisInscritos()
+        {
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            var asistencias = await _asistencia.ListarPorOrganizador(userId);
+            return View("Index", asistencias); // Puedes usar la misma vista Index
         }
     }
 }
